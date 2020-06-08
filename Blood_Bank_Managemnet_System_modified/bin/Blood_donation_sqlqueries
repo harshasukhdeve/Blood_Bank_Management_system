@@ -1,0 +1,76 @@
+create table ADMINSIGNUP(
+username varchar(50) not null,
+emailid varchar(100),
+password varchar(40), 
+mobilenumber number(20),
+uniqueid number(10),
+constraint ADMINSIGNUP primary key(emailid)
+);
+
+create table HOSPITAL(
+HOSPITALID number(30),
+NAME varchar(50),
+PHONE_NO number(20),
+ADDRESS varchar(400),
+USERNAME varchar(50),
+EMAIL varchar(60),
+PASSWORD varchar(50)
+);
+
+
+create table FEEDBACK(
+id number(20),
+feedback varchar(500)
+);
+
+create table BLOOD_DONOR(
+donor_id number(30),
+name varchar(50),
+weight number(30),
+address varchar(500), 
+phone_no number(30), 
+b_id number(30),
+constraint BLOOD_DONOR primary key(donor_id)
+);
+
+create table REFERRALS(
+id number(10),
+name varchar(50),
+address varchar(500),
+phone_number varchar(50),
+CONSTRAINT fk_refer
+FOREIGN KEY (id)
+REFERENCES blood_donor(donor_id)
+);
+
+create table  DONATIONS (
+donor_id number(20),
+donation_ID number(20) not null,
+DO_DATE Date not null,
+ADDRESS varchar(600) not null,
+BLOOD_GRP number(20) not null,
+CONSTRAINT fk_donat
+FOREIGN KEY (donor_id)
+REFERENCES blood_donor(donor_id),
+CONSTRAINT DONATIONS PRIMARY KEY(donation_id)
+);
+
+create table camp(
+NAME varchar(200),
+MOBILENO number(20),
+C_DATE date,
+ADDRESS varchar(500)
+);
+
+
+CREATE SEQUENCE seq_hos
+MINVALUE 1
+START WITH 1
+INCREMENT BY 1
+CACHE 30;
+
+CREATE SEQUENCE seq_donor
+MINVALUE 1
+START WITH 1
+INCREMENT BY 1
+CACHE 30;
